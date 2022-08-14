@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.2"
+ruby '2.7.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 # gem "rails", "~> 7.0.3", ">= 7.0.3.1"
@@ -43,8 +43,14 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+#Use bootstrap-sass gem
+gem 'bootstrap-sass', '~> 3.4.1'
+
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails", '>= 2.1.0'
+
+#Use jquery-rails gem
+gem 'jquery-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
