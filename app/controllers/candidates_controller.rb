@@ -1,15 +1,19 @@
 class CandidatesController < ApplicationController
     
+    # layout "backend"              #套用 backend 版型
+
     before_action :find_candidate, only: [:edit, :update, :destroy, :vote]
 
     #使用 Model 的 all 類別方法，並存成 @candidates 實體變數
     #因為要在 View 使⽤ @candidates 變數所以才使⽤實體變數
     def index
-        @candidates = Candidate.all                 
+        @candidates = Candidate.all
+        render layout: "backend"          # index Action 套用 backend 版型(投票時會出錯!!!)         
     end
 
     def new
         @candidate = Candidate.new
+        # render layout: "backend"
     end
 
     def create
