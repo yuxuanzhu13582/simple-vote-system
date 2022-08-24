@@ -7,8 +7,10 @@ class CandidatesController < ApplicationController
     #使用 Model 的 all 類別方法，並存成 @candidates 實體變數
     #因為要在 View 使⽤ @candidates 變數所以才使⽤實體變數
     def index
-        @candidates = Candidate.all
-        render layout: "backend"          # index Action 套用 backend 版型(投票時會出錯!!!)         
+        # @candidates = Candidate.all                           #desplay all candidates
+        # @candidates = Candidate.all.where("age > 18")         #desplay cadidates with age > 18 
+        @candidates = Candidate.all.order(age: :desc)
+        # render layout: "backend"          # index Action 套用 backend 版型(投票時會出錯!!!)         
     end
 
     def new
@@ -61,7 +63,14 @@ class CandidatesController < ApplicationController
     end
 
     def find_candidate
-        @candidate = Candidate.find_by(id: params[:id])
+        # @candidate = Candidate.find_by(id: params[:id])        # find_by 方法查詢，如果查不到僅是回傳 nil 物件
+
+        #當 find ⽅法查不到資料、發⽣例外訊息，就會進⾏ rescue 路線
+        begin
+            @candidate = Candidate.find(params[:id])
+        rescue
+            redirect_to candidate_path, notice: "查無此候選人"
+        end
     end
 
 end

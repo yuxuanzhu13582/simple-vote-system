@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Candidate.create(name: '洽吉', party: '綠綠黨', age: 52, politics: '浮龍王')
